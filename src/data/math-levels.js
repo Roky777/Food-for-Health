@@ -4,7 +4,8 @@ const LEVELS = [{
   title: "Food Group Sorter",
   instruction: "Sort each food by how it helps your body.",
   showNames: true,
-  maxOnBelt: 4,
+  maxOnBelt: 3,
+  beltTravelRate: 0.076,
   bins: [
     { id: "energy", label: "Energy-giving", art: "rice" },
     { id: "building", label: "Body-building", art: "milk" },
