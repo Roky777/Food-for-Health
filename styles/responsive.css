@@ -82,14 +82,19 @@ body {
 .sorting-bin__category-label {
   top: 74.8%;
   bottom: auto;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 16.5%;
   box-sizing: border-box;
   padding-inline: .3em;
   overflow: hidden;
   line-height: .95;
   white-space: nowrap;
+}
+
+.sorting-bin__category-label--hyphenated > span {
+  display: inline;
 }
 
 /* Food-group names are longer than the labels used by the shared template.
@@ -106,6 +111,15 @@ body {
   right: 17%;
   left: 17%;
   font-size: clamp(.58rem, 1.05cqw, 1rem);
+}
+
+@container (max-width: 80rem) {
+  .sorting-bins[data-count="3"] .sorting-bin__category-label--hyphenated {
+    flex-direction: column;
+    font-size: clamp(.55rem, min(1.05cqw, 1.95cqh), .88rem);
+    line-height: .78;
+    letter-spacing: 0;
+  }
 }
 
 /* The pause-panel PNG has a large transparent canvas. Height-based sizing

@@ -110,7 +110,17 @@ function createBin(bin, itemName, state) {
 
   const categoryLabel = document.createElement("span");
   categoryLabel.className = "sorting-bin__category-label";
-  categoryLabel.textContent = bin.label;
+  const labelParts = bin.label.split("-");
+  if (labelParts.length > 1) {
+    categoryLabel.classList.add("sorting-bin__category-label--hyphenated");
+    labelParts.forEach((part, index) => {
+      const line = document.createElement("span");
+      line.textContent = index < labelParts.length - 1 ? `${part}-` : part;
+      categoryLabel.append(line);
+    });
+  } else {
+    categoryLabel.textContent = bin.label;
+  }
   root.append(categoryLabel);
 
   if (state.placed?.category === bin.id) {
