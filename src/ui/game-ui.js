@@ -21,6 +21,7 @@ export function renderGameUi(state, level) {
       <p class="game-certificate__subtitle">Food group challenge complete!</p>
       <div class="game-certificate__results" aria-label="Campaign results">
         <div><i aria-hidden="true">★</i><span><small>Score</small><strong>${state.score}</strong></span></div>
+        <div><i aria-hidden="true">XP</i><span><small>XP earned</small><strong>${state.campaignXp}<b>/200</b></strong></span></div>
         <div><i aria-hidden="true">★</i><span><small>Stars</small><strong>${state.campaignStars}<b>/${MATH_LEVELS.length * 3}</b></strong></span></div>
         <div><i aria-hidden="true">✓</i><span><small>First try</small><strong>${accuracy}<b>%</b></strong></span></div>
       </div>
@@ -59,7 +60,7 @@ export function renderGameUi(state, level) {
     success.className = "success-screen";
     success.setAttribute("aria-label", `Level complete. ${state.stars} out of 3 stars.`);
     success.innerHTML = `
-      <img class="success-screen__background" src="assets/ui/start-background.webp" alt="" />
+      <img class="success-screen__background" src="assets/backgrounds/bg.webp" alt="" />
       <div class="success-dance" role="button" tabindex="0" aria-label="Restart Sparky's moonwalk">
         <div class="success-dance__viewport"><img class="success-dance__sheet" src="assets/characters/moon_walk_normalized.webp" alt="" /></div>
         <div class="success-dance__effects" aria-hidden="true"></div>
@@ -73,7 +74,10 @@ export function renderGameUi(state, level) {
             "success-star-3.webp",
           ].map((source, index) => `<span class="success-star success-star--${index + 1}${index < state.stars ? " success-star--earned" : ""}" style="--star-index:${index}"><img src="assets/ui/${source}" alt="" /></span>`).join("")}
         </div>
-        <p class="success-screen__score"><span>Level score</span><strong>${state.levelScore}</strong></p>
+        <div class="success-screen__stats">
+          <p class="success-screen__score"><span>Level score</span><strong>${state.levelScore}</strong></p>
+          <p class="success-screen__xp"><span>XP earned</span><strong>+${state.levelXp}</strong></p>
+        </div>
         <div class="success-screen__actions"></div>
       </div>`;
     const actions = success.querySelector(".success-screen__actions");
@@ -98,7 +102,7 @@ export function renderGameUi(state, level) {
     pause.className = "pause-screen";
     pause.setAttribute("aria-label", "Game paused");
     pause.innerHTML = `
-      <img class="pause-screen__background" src="assets/ui/start-background.webp" alt="" />
+      <img class="pause-screen__background" src="assets/backgrounds/bg.webp" alt="" />
       <img class="pause-screen__mascot" src="assets/ui/12_peek_wave_2048 2.webp" alt="Sparky waving" />
       <img class="pause-screen__panel" src="assets/ui/21699a15ad6312465e63b85b73ddad4fbd18816d.webp" alt="Take a Break" />
       <div class="pause-screen__controls">
