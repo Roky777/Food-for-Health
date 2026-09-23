@@ -1,29 +1,29 @@
 const scienceArt = (path) => new URL(`../../assets/GRADE 4/science game/${path}`, import.meta.url).href;
 const foodArt = (path) => new URL(`../../assets/GRADE 3/Food We Eat/${path}`, import.meta.url).href;
 const levelArt = { level1: {
-  rice: scienceArt("level 2/rice (1).png"), potato: scienceArt("level 1/potato (1).png"),
-  banana: scienceArt("level 1/banana.png"), millets: foodArt("level 2/grains (1).png"),
-  pulses: foodArt("LEVEL 1/pulses.png"), milk: scienceArt("level 1/milk (1).png"), eggs: foodArt("level 2/eggs (1).png"),
-  carrot: scienceArt("level 1/carrot (1).png"), spinach: scienceArt("level 1/spinach (1).png"), orange: scienceArt("level 1/orange.png"),
+  rice: scienceArt("level 2/rice (1).webp"), potato: scienceArt("level 1/potato (1).webp"),
+  banana: scienceArt("level 1/banana.webp"), millets: foodArt("level 2/grains (1).webp"),
+  pulses: foodArt("LEVEL 1/pulses.webp"), milk: scienceArt("level 1/milk (1).webp"), eggs: foodArt("level 2/eggs (1).webp"),
+  carrot: scienceArt("level 1/carrot (1).webp"), spinach: scienceArt("level 1/spinach (1).webp"), orange: scienceArt("level 1/orange.webp"),
 } };
 export function resolveMathArt(artId, assetSet) { return levelArt?.[assetSet]?.[artId] ?? levelArt.level1.rice; }
-const blankBin = "assets/ui/sorting-bin-blank.png";
+const blankBin = "assets/ui/sorting-bin-blank.webp";
 export const assets = {
   characters: {
-    idle: "assets/characters/idle.png",
-    presentation: "assets/characters/final_presentation_clean.png",
-    correct: "assets/characters/modified_thubms_up.png",
-    nod: "assets/characters/updated_nod.png",
-    happy: "assets/characters/happy.png",
-    thinking: "assets/characters/thinking.png",
-    surprised: "assets/characters/surprised.png",
-    successDance: "assets/characters/moon_walk_normalized.png",
+    idle: "assets/characters/idle.webp",
+    presentation: "assets/characters/final_presentation_clean.webp",
+    correct: "assets/characters/modified_thubms_up.webp",
+    nod: "assets/characters/updated_nod.webp",
+    happy: "assets/characters/happy.webp",
+    thinking: "assets/characters/thinking.webp",
+    surprised: "assets/characters/surprised.webp",
+    successDance: "assets/characters/moon_walk_normalized.webp",
   },
   backgrounds: {}, items: { math: levelArt.level1, mathByLevel: levelArt },
   ui: {
-    success: ["assets/ui/start-background.png", "assets/ui/image 18.png", "assets/ui/success-star-1.png", "assets/ui/success-star-2.png", "assets/ui/success-star-3.png"],
-    conveyorRims: "assets/ui/conveyor-rims.png", conveyorFrame: "assets/ui/conveyor-frame.png", conveyorTrackMask: "assets/ui/conveyor-track.png",
-    sortingBins: { energy: blankBin, building: blankBin, protective: blankBin }, boxLeaves: "assets/ui/ui-box-leaves.png" }, audio: {}, fx: {},
+    success: ["assets/ui/start-background.webp", "assets/ui/image 18.webp", "assets/ui/success-star-1.webp", "assets/ui/success-star-2.webp", "assets/ui/success-star-3.webp"],
+    conveyorRims: "assets/ui/conveyor-rims.webp", conveyorFrame: "assets/ui/conveyor-frame.webp", conveyorTrackMask: "assets/ui/conveyor-track.webp",
+    sortingBins: { energy: blankBin, building: blankBin, protective: blankBin }, boxLeaves: "assets/ui/ui-box-leaves.webp" }, audio: {}, fx: {},
 };
 const imageRequests = new Map();
 export function preloadImage(src) {
