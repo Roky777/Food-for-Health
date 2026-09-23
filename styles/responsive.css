@@ -85,7 +85,21 @@ body {
   display: grid;
   place-items: center;
   height: 16.5%;
+  box-sizing: border-box;
+  padding-inline: .3em;
+  overflow: hidden;
   line-height: .95;
+  white-space: nowrap;
+}
+
+/* Food-group names are longer than the labels used by the shared template.
+   Size them against both stage width and height so they remain entirely
+   inside the artwork's white name plate on every landscape phone/tablet. */
+.sorting-bins[data-count="3"] .sorting-bin__category-label {
+  right: 13%;
+  left: 13%;
+  font-size: clamp(.45rem, min(.82cqw, 1.7cqh), 1rem);
+  letter-spacing: -.025em;
 }
 
 .sorting-bins[data-count="5"] .sorting-bin__category-label {
