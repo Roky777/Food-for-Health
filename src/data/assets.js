@@ -21,7 +21,7 @@ export const assets = {
   },
   backgrounds: {}, items: { math: levelArt.level1, mathByLevel: levelArt },
   ui: {
-    success: ["assets/backgrounds/bg.webp", "assets/backgrounds/badge.webp", "assets/ui/image 18.webp", "assets/ui/success-star-1.webp", "assets/ui/success-star-2.webp", "assets/ui/success-star-3.webp"],
+    success: ["assets/backgrounds/bg.webp?v=20260925-clear-food-bg-1", "assets/backgrounds/badge.webp", "assets/ui/image 18.webp", "assets/ui/success-star-1.webp", "assets/ui/success-star-2.webp", "assets/ui/success-star-3.webp"],
     conveyorRims: "assets/ui/conveyor-rims.webp", conveyorFrame: "assets/ui/conveyor-frame.webp", conveyorTrackMask: "assets/ui/conveyor-track.webp",
     sortingBins: { energy: blankBin, building: blankBin, protective: blankBin }, boxLeaves: "assets/ui/ui-box-leaves.webp" }, audio: {}, fx: {},
 };
