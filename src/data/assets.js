@@ -10,14 +10,14 @@ export function resolveMathArt(artId, assetSet) { return levelArt?.[assetSet]?.[
 const blankBin = "assets/ui/sorting-bin-blank.webp";
 export const assets = {
   characters: {
-    idle: "assets/characters/idle.webp",
-    presentation: "assets/characters/final_presentation_clean.webp",
-    correct: "assets/characters/modified_thubms_up.webp",
-    nod: "assets/characters/updated_nod.webp",
-    happy: "assets/characters/happy.webp",
-    thinking: "assets/characters/thinking.webp",
-    surprised: "assets/characters/surprised.webp",
-    successDance: "assets/characters/moon_walk_normalized.webp",
+    idle: "assets/ui/sparky/idle.webp",
+    presentation: "assets/ui/sparky/final_presentation_clean.webp",
+    correct: "assets/ui/sparky/modified_thubms_up.webp",
+    nod: "assets/ui/sparky/updated_nod.webp",
+    happy: "assets/ui/sparky/happy.webp",
+    thinking: "assets/ui/sparky/thinking.webp",
+    surprised: "assets/ui/sparky/surprised.webp",
+    successDance: "assets/ui/sparky/moon_walk_normalized.webp",
   },
   backgrounds: {}, items: { math: levelArt.level1, mathByLevel: levelArt },
   ui: {
@@ -28,6 +28,9 @@ export const assets = {
 const imageRequests = new Map();
 const decodedImages = new Map();
 const DECODED_IMAGE_LIMIT = 64;
+const sparkyFallback = (src) => src.startsWith("assets/ui/sparky/")
+  ? src.replace("assets/ui/sparky/", "assets/characters/").replace(/\.webp$/, ".png")
+  : "";
 function retainDecodedImage(src, image) {
   decodedImages.delete(src); decodedImages.set(src, image);
   while (decodedImages.size > DECODED_IMAGE_LIMIT) decodedImages.delete(decodedImages.keys().next().value);
@@ -40,7 +43,17 @@ export function preloadImage(src) {
   }
   const request = new Promise((resolve) => { const image = new Image(); image.decoding = "async";
     image.onload = async () => { await image.decode?.().catch(() => {}); retainDecodedImage(src, image); resolve({ src, loaded: true }); };
-    image.onerror = () => resolve({ src, loaded: false }); image.src = src; });
+    image.onerror = () => {
+      const fallback = sparkyFallback(src);
+      if (fallback && image.dataset.fallback !== "true") {
+        image.dataset.fallback = "true";
+        image.src = fallback;
+        return;
+      }
+      resolve({ src, loaded: false });
+    };
+    image.src = src;
+  });
   imageRequests.set(src, request); return request;
 }
 export function hydrateDeferredImages(root = document) {
